@@ -7,21 +7,40 @@
 
 import UIKit
 
+let notificationCenterPassDataKey = "passDataKey"
+
 class FirstVC: BaseVC {
 
     @IBOutlet weak var transferredDataWithProtocolTF: UITextField!
     @IBOutlet weak var transferredDataWithNotificationCenterTF: UITextField!
     @IBOutlet weak var transferredDataWithClosureTF: UITextField!
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
+    
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(transferredDataWithNotificationCenter(_:)),
+                                               name: Notification.Name(rawValue: notificationCenterPassDataKey),
+                                               object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc  func transferredDataWithNotificationCenter(_ notification: NSNotification) {
+        transferredDataWithNotificationCenterTF.text = (notification.object as! String)
     }
     
     // MARK: - Actions
     @IBAction func nextVCButton(_ sender: Any) {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "SecondVC") as? SecondVC {
             vc.delegate = self
+            
             transferredDataWithProtocolTF.text = ""
+            transferredDataWithNotificationCenterTF.text = ""
+            transferredDataWithClosureTF.text = ""
+            
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }

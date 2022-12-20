@@ -88,7 +88,7 @@
                                     <color key="baseForegroundColor" systemColor="labelColor"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="transferDataWithNCButton:" destination="xdQ-Vx-EmY" eventType="touchUpInside" id="keX-WJ-4Jo"/>
+                                    <action selector="transferDataWithNotificationCenterButton:" destination="xdQ-Vx-EmY" eventType="touchUpInside" id="MMY-dw-T2e"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q99-Fl-agL" userLabel="ClosureButton">
@@ -126,9 +126,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="3lB-Et-Jb6"/>
                     <connections>
-                        <outlet property="enterDataWithClosureTF" destination="OMS-Hw-4FH" id="WDi-sJ-Srp"/>
-                        <outlet property="enterDataWithNotificationCenterTF" destination="FnF-Tz-ec7" id="hqa-EZ-58h"/>
-                        <outlet property="enterDataWithProtocolTF" destination="AUs-ZM-GmJ" id="AxB-85-Fu6"/>
+                        <outlet property="enterDataForClosureTF" destination="OMS-Hw-4FH" id="WDi-sJ-Srp"/>
+                        <outlet property="enterDataForNotificationCenterTF" destination="FnF-Tz-ec7" id="hqa-EZ-58h"/>
+                        <outlet property="enterDataForProtocolTF" destination="AUs-ZM-GmJ" id="AxB-85-Fu6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="20O-4w-pGF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

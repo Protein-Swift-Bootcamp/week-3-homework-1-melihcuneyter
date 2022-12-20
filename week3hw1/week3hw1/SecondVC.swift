@@ -13,9 +13,9 @@ protocol TransferDataDelegate: BaseVC {
 
 class SecondVC: BaseVC {
 
-    @IBOutlet weak var enterDataWithProtocolTF: UITextField!
-    @IBOutlet weak var enterDataWithNotificationCenterTF: UITextField!
-    @IBOutlet weak var enterDataWithClosureTF: UITextField!
+    @IBOutlet weak var enterDataForProtocolTF: UITextField!
+    @IBOutlet weak var enterDataForNotificationCenterTF: UITextField!
+    @IBOutlet weak var enterDataForClosureTF: UITextField!
     
     weak var delegate: TransferDataDelegate?
     
@@ -23,15 +23,25 @@ class SecondVC: BaseVC {
         super.viewDidLoad()
     }
     
-    // MARK: - Actions
-    @IBAction func transferDataWithProtocolButton(_ sender: Any) {
-        delegate?.transferData(enterDataWithProtocolTF.text ?? "No Data!")
-        
+    private func postNotification() {
+        NotificationCenter.default.post(name: NSNotification.Name(notificationCenterPassDataKey),
+                                        object: enterDataForNotificationCenterTF.text)
+    }
+    
+    private func dismiss() {
         navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
     }
     
+    // MARK: - Actions
+    @IBAction func transferDataWithProtocolButton(_ sender: Any) {
+        delegate?.transferData(enterDataForProtocolTF.text ?? "")
+        dismiss()
+    }
+    
     @IBAction func transferDataWithNotificationCenterButton(_ sender: Any) {
+        postNotification()
+        dismiss()
     }
     
     @IBAction func transferDataWithClosureButton(_ sender: Any) {
